@@ -123,7 +123,7 @@ body {
   border-radius: 15px;
   box-shadow: 0px 4px 16px 0px #5763a5;
   margin-bottom: 20px;
-  height: 300px;
+  min-height: 300px;
 }
 .your-password-container {
   display: flex;
@@ -184,7 +184,7 @@ body {
 .line {
   margin: 0;
   width: 100%;
-  border: 1px solid #c3caea;
+  border-bottom: 1px solid #c3caea;
 }
 .show-saved-passwords-container {
   display: flex;
@@ -214,6 +214,9 @@ body {
   justify-content: flex-start;
   align-items: flex-start;
   width: 100%;
+  max-height: 300px;
+  margin-bottom: 10px;
+  overflow-y: auto;
 }
 .no-pwd-img-container {
   display: flex;
@@ -249,7 +252,6 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: blue;
   border-radius: 30px;
   width: 40px;
   height: 40px;
@@ -333,7 +335,7 @@ body {
     justify-content: flex-start;
     padding-left: 40px;
     padding-right: 40px;
-    height: 400px;
+    min-height: 400px;
   }
   .each-user-details {
     width: 30%;
@@ -347,4 +349,29 @@ body {
   .passwords-count {
     font-size: 12px;
   }
+}
+
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.green {
+  background-color: green;
+}
+.orange {
+  background-color: orange;
+}
+.violet {
+  background-color: violet;
+}
+.yellow {
+  background-color: yellow;
+}
+.sky-blue {
+  background-color: skyblue;
+}
+.aqua {
+  background-color: aqua;
 }
