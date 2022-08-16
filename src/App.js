@@ -4,9 +4,22 @@ import {v4 as uuidv4} from 'uuid'
 
 import './App.css'
 
+const backgroundColorsList = [
+  'red',
+  'blue',
+  'green',
+  'orange',
+  'violet',
+  'yellow',
+  'sky-blue',
+  'aqua',
+]
+const getInitialClassName = () =>
+  backgroundColorsList[Math.floor(Math.random() * backgroundColorsList.length)]
+
 const RenderDetails = props => {
   const {eachApp, deleteUserApplicationDetails, showPassword} = props
-  const {id, websiteName, username, password} = eachApp
+  const {id, websiteName, username, password, initialClassName} = eachApp
   const initialSmallCase = websiteName.slice(0, 1)
   const initial = initialSmallCase.toUpperCase()
 
@@ -16,7 +29,7 @@ const RenderDetails = props => {
 
   return (
     <li className="each-user-details">
-      <div className="initial-container">
+      <div className={`initial-container ${initialClassName}`}>
         <p className="initial">{initial}</p>
       </div>
       <div className="app-details">
@@ -78,25 +91,27 @@ class App extends Component {
 
   onChangeSearchInput = event => {
     this.setState({searchInputValue: event.target.value})
-    const {searchInputValue} = this.state
-    console.log(searchInputValue)
   }
 
   addWebsiteUsernamePassword = event => {
     event.preventDefault()
     const {websiteName, username, password, userAppsDetailsList} = this.state
-    const newUserDetails = {
-      id: uuidv4(),
-      websiteName,
-      username,
-      password,
+    const initialClassName = getInitialClassName()
+    if (username !== '' && password !== '' && websiteName !== '') {
+      const newUserDetails = {
+        id: uuidv4(),
+        websiteName,
+        username,
+        password,
+        initialClassName,
+      }
+      this.setState({
+        userAppsDetailsList: [...userAppsDetailsList, newUserDetails],
+        websiteName: '',
+        username: '',
+        password: '',
+      })
     }
-    this.setState({
-      userAppsDetailsList: [...userAppsDetailsList, newUserDetails],
-      websiteName: '',
-      username: '',
-      password: '',
-    })
   }
 
   deleteUserApplicationDetails = id => {
